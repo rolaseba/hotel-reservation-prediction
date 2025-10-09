@@ -75,7 +75,7 @@ In a mid-sized U.S. urban hotel with typical $10M annual revenue, cancellations 
 | **Under-Sampled RF** | 87% | 0.80 | 0.86 | 0.83 | 88% | 86% |
 | **Under-Sampled XGB** | 85% | 0.78 | 0.84 | 0.81 | 86% | 84% |
 | **Under-Sampled CatBoost** | 86% | 0.79 | 0.85 | 0.82 | 87% | 85% |
-| **Voting Classifier (Under)** | **87.5%** | **0.81** | **0.86** | **0.83** | **88%** | **86%** |
+| **Voting Classifier (Under)** 🏆 | **87.5%** | **0.81** | **0.86** | **0.83** | **88%** | **86%** |
 | **Over-Sampled RF** | 88% | 0.82 | 0.84 | 0.83 | 90% | 84% |
 | **Voting Classifier (Over)** | 88.2% | 0.83 | 0.84 | 0.83 | 90% | 84% |
 
