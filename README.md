@@ -1,5 +1,8 @@
 # Hotel Reservation Cancellation Prediction
 
+**Repo:** [https://github.com/rolaseba/hotel-reservation-prediction](https://github.com/rolaseba/hotel-reservation-prediction)  
+**Author:** Sebastian Rolando
+
 ## 🎯 Executive Summary
 
 **Business Result:** Developed and validated an ensemble machine learning model that predicts booking cancellations with **87.5% accuracy** and **86% sensitivity**, demonstrating a scalable solution to address the $670K annual revenue loss from cancellations in mid-sized hotels. This portfolio project showcases a production-ready approach to proactive revenue protection through data-driven risk assessment.
