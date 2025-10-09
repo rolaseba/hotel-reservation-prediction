@@ -1,2 +1,4 @@
 .gitattributes
 __pycache__
+datasets/.ipynb_checkpoints
+catboost_info
