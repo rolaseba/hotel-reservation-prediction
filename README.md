@@ -1,13 +1,25 @@
 # Hotel Reservation Cancellation Prediction
 
+
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.2%2B-orange)
+![XGBoost](https://img.shields.io/badge/XGBoost-1.7%2B-green)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
+
+
 **Repo:** [https://github.com/rolaseba/hotel-reservation-prediction](https://github.com/rolaseba/hotel-reservation-prediction)  
 **Author:** Sebastian Rolando
 
-## 🎯 Executive Summary
+> [!NOTE]
+> This repository is part of a professional Data Science portfolio demonstrating applied machine learning for real-world business problems in the hospitality industry.
+
+
+## Executive Summary
 
 **Business Result:** Developed and validated an ensemble machine learning model that predicts booking cancellations with **87.5% accuracy** and **86% sensitivity**, demonstrating a scalable solution to address the $670K annual revenue loss from cancellations in mid-sized hotels. This portfolio project showcases a production-ready approach to proactive revenue protection through data-driven risk assessment.
 
-## 📊 Dataset Context
+## Dataset Context
 
 **Origin and Source**
 This analysis utilizes the publicly available Hotel Booking Demand dataset from two hotels in Portugal, providing real-world validation of the methodology:
@@ -21,17 +33,29 @@ This analysis utilizes the publicly available Hotel Booking Demand dataset from 
 
 **Note**: While this specific implementation uses historical Portuguese hotel data, the methodology, feature engineering, and model architecture are directly applicable to hotel operations globally, particularly addressing the universal challenge of cancellation-driven revenue loss.
 
-## 💰 Hotel Cancellation Impact Use Case
+> [!TIP]
+> You can adapt this dataset structure for other domains, such as airline reservations or event bookings, using the same feature engineering techniques.
 
-In a mid-sized U.S. urban hotel with typical $10M annual revenue, cancellations and no-shows erode **6.7% of revenue ($670K loss yearly)**, with peaks up to **11% during high seasons** like summer due to unresold rooms and distorted forecasting [[1]](https://skift.com/2024/07/23/summer-travels-hidden-hurdle-the-impacts-of-cancellations-and-no-shows/) [[2]](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5051585). 
 
-**Channel Segmentation:** OTA channels (e.g., Booking.com) drive higher impacts, with cancellations accounting for **40% of booking revenue** in regions like APAC, compared to lower rates for direct bookings [[3]](https://www.d-edge.com/wp-content/uploads/2024/04/Hotel-Distribution-Report-2024-EN.pdf). 
+## Business Context: The Impact of Cancellations
 
-**Guest Behavior:** Gen Z and Millennials contribute more (**64-66% seeking flexibility**), often rebooking at lower rates after price drops. A **$50 rate hike boosts cancellation risk by 16%**, turning potential profit into losses from discounts or voids [[2]](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5051585).
+In a typical urban hotel generating **$10M in annual revenue**, cancellations and no-shows result in **6.7% revenue loss ($670K annually)**, with peaks of **11% during high-demand seasons**.
 
-**High-risk OTA:** An online travel agency that contributes significantly to cancellation-driven revenue loss, forecasting distortion, and profitability erosion due to flexible booking terms, guest price sensitivity, and volatile demand behavior.
+### Key Factors
+- **Distribution Channels:** OTAs (e.g., Booking.com) contribute up to **40% of cancellation-driven losses**.  
+- **Guest Segments:** Gen Z and Millennials exhibit **64–66% flexibility preference**, often rebooking at lower prices.  
+- **Pricing Sensitivity:** A **$50 rate increase** raises cancellation probability by **16%**.
 
-## 🏆 Solution Performance & Validation
+> [!NOTE]
+> On average, cancellations and no-shows can erode more than **6% of annual revenue** in mid-sized hotels — a margin often greater than yearly operational cost reductions.
+
+**References:**  
+[Skift – Impacts of Cancellations and No-Shows](https://skift.com/2024/07/23/summer-travels-hidden-hurdle-the-impacts-of-cancellations-and-no-shows/)  
+[SSRN – Price Sensitivity and Cancellations](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5051585)  
+[D-Edge – Hotel Distribution Report 2024](https://www.d-edge.com/wp-content/uploads/2024/04/Hotel-Distribution-Report-2024-EN.pdf)
+
+
+## Solution Performance & Validation
 
 ### Optimal Model: Voting Classifier with Under-Sampling
 - **Overall Accuracy:** 87.5%
@@ -41,7 +65,7 @@ In a mid-sized U.S. urban hotel with typical $10M annual revenue, cancellations 
 
 **Validation Approach**: Trained and tested on real hotel booking data, demonstrating robust performance across both resort and city hotel contexts, with methodology directly transferable to other hotel markets.
 
-## 📈 Key Business Insights
+## Key Business Insights
 
 ### Critical Cancellation Drivers Identified:
 1. **Lead Time Effect:** Longer advance bookings show 3.2x higher cancellation risk
@@ -50,7 +74,7 @@ In a mid-sized U.S. urban hotel with typical $10M annual revenue, cancellations 
 4. **Seasonal Patterns:** High-risk months identified for targeted interventions
 5. **Pricing Sensitivity:** $50 rate increases linked to 16% higher cancellation risk
 
-## 🚀 Business Applications & Transferability
+## Business Applications & Transferability
 
 ### Immediate Use Cases:
 - **Revenue Protection:** Dynamic overbooking based on cancellation risk scores
@@ -65,7 +89,7 @@ In a mid-sized U.S. urban hotel with typical $10M annual revenue, cancellations 
 
 ---
 
-## 🔬 Technical Deep Dive
+## Technical Deep Dive
 
 ### Model Comparison Metrics
 
@@ -81,17 +105,16 @@ In a mid-sized U.S. urban hotel with typical $10M annual revenue, cancellations 
 
 ### Model Selection Rationale
 
-**Business-Driven Technical Decision:**
+The **Voting Classifier with Under-Sampling** was selected for its optimal trade-off between accuracy and sensitivity.  
+It minimizes missed cancellations (false negatives) that represent the highest financial risk.
 
-The **Voting Classifier with Under-Sampling** was selected based on comprehensive cost-benefit analysis:
+> [!TIP]
+> The chosen ensemble model prioritizes **sensitivity** (detecting cancellations) over **overall accuracy**, reflecting a business-driven decision: missing a cancellation is costlier than flagging a false one.
 
-- **Initial Random Forest (89% accuracy, 72% sensitivity):** Achieved high accuracy by optimizing for majority class, but missed 28% of cancellations - creating significant revenue leakage
-- **Voting Classifier (87.5% accuracy, 86% sensitivity):** Sacrificed 1.5% overall accuracy to gain 14% improvement in cancellation detection
-
-**Technical Justification:**
-- **Higher Business Value:** False negatives (missed cancellations) have greater financial impact than false positives
-- **Ensemble Robustness:** Voting classifier reduces variance and leverages complementary model strengths
-- **Optimal Trade-off:** Balanced specificity (88%) and sensitivity (86%) for operational practicality
+**Advantages:**
+- Improved detection of high-risk bookings  
+- Ensemble robustness from multiple model perspectives  
+- Balanced performance (specificity 88%, sensitivity 86%)
 
 ### Technical Stack
 
@@ -129,7 +152,7 @@ VotingClassifier (Ensemble Learning)
 - **XGBoost** (weight: 1.0) - Gradient boosting performance
 - **Soft Voting** - Probability-based predictions
 
-## 🚀 Deployment Framework
+## Deployment Framework Opportunities
 
 **Option 1: Batch API** - Daily prediction service generating cancellation risk scores for upcoming arrivals
 
@@ -144,3 +167,8 @@ VotingClassifier (Ensemble Learning)
 **Portfolio Value:** This project demonstrates a complete, production-ready machine learning pipeline validated on real hotel data. The methodology, feature engineering approach, and model architecture are directly transferable to hotel operations globally, providing a proven framework for addressing the universal $670K revenue loss challenge from booking cancellations.
 
 *Complete implementation code, experimental results, and methodology documentation available in the project repository.*
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE) © 2024 Sebastián Rolando.  
+You are free to use, modify, and distribute this software, provided that proper credit is given.
