@@ -170,5 +170,5 @@ VotingClassifier (Ensemble Learning)
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) © 2024 Sebastián Rolando.  
+This project is licensed under the [MIT License](https://github.com/rolaseba/hotel-reservation-prediction/blob/main/LICENSE) © 2024 Sebastián Rolando.  
 You are free to use, modify, and distribute this software, provided that proper credit is given.
