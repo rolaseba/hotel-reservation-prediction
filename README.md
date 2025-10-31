@@ -57,10 +57,10 @@ In a typical urban hotel generating **$10M in annual revenue**, cancellations an
 
 ## Solution Performance & Validation
 
-### Optimal Model: Voting Classifier with Under-Sampling
-- **Overall Accuracy:** 87.5%
-- **Sensitivity (Cancellation Detection):** 86%
-- **Specificity (Booking Confidence):** 88%
+### Optimal Model: Voting Classifier with Over-Sampling (SVM-SMOTE)
+- **Overall Accuracy:** 88.2%
+- **Sensitivity (Cancellation Detection):** 84%
+- **Specificity (Booking Confidence):** 89.8%
 - **F1-Score:** 0.83
 
 **Validation Approach**: Trained and tested on real hotel booking data, demonstrating robust performance across both resort and city hotel contexts, with methodology directly transferable to other hotel markets.
@@ -99,9 +99,11 @@ In a typical urban hotel generating **$10M in annual revenue**, cancellations an
 | **Under-Sampled RF** | 87% | 0.80 | 0.86 | 0.83 | 88% | 86% |
 | **Under-Sampled XGB** | 85% | 0.78 | 0.84 | 0.81 | 86% | 84% |
 | **Under-Sampled CatBoost** | 86% | 0.79 | 0.85 | 0.82 | 87% | 85% |
-| **Voting Classifier (Under)** 🏆 | **87.5%** | **0.81** | **0.86** | **0.83** | **88%** | **86%** |
+| **Voting Classifier (Under)** | 87.5% | 0.81 | 0.86 | 0.83 | 87.3% | 86% |
 | **Over-Sampled RF** | 88% | 0.82 | 0.84 | 0.83 | 90% | 84% |
-| **Voting Classifier (Over)** | 88.2% | 0.83 | 0.84 | 0.83 | 90% | 84% |
+| **Over-Sampled XGB** | 87% | 0.80 | 0.83 | 0.82 | 89% | 83% |
+| **Over-Sampled CatBoost** | 88% | 0.82 | 0.84 | 0.83 | 90% | 84% |
+| **Voting Classifier (Over)** 🏆 | 88.2% | 0.83 | 0.84 | 0.83 | 89.8% | 84% |
 
 ### Model Selection Rationale
 
@@ -164,7 +166,68 @@ VotingClassifier (Ensemble Learning)
 
 ---
 
-**Portfolio Value:** This project demonstrates a complete, production-ready machine learning pipeline validated on real hotel data. The methodology, feature engineering approach, and model architecture are directly transferable to hotel operations globally, providing a proven framework for addressing the universal $670K revenue loss challenge from booking cancellations.
+## Model Evaluation Metrics
+
+The following business-critical metrics were prioritized:
+
+- **Recall (Sensitivity)**: Ability to detect actual cancellations, enabling proactive retention.
+- **Precision**: Accuracy in flagging potential cancellations to optimize retention campaign costs.
+- **Specificity**: Success in identifying loyal customers to maintain positive relationships.
+- **False Positive Rate**: Control measure for minimizing unnecessary retention actions.
+
+### Sampling Strategies & Model Performance
+
+#### Under-Sampling Approach
+Balanced dataset by reducing majority class (non-cancellations) to match minority class size.
+
+**Models Evaluated:**
+- Random Forest (Accuracy: 87%, Sensitivity: 86%)
+- XGBoost (Accuracy: 85%, Sensitivity: 84%)
+- CatBoost (Accuracy: 86%, Sensitivity: 85%)
+- **Voting Classifier** 🏆 (Accuracy: 87.5%, Sensitivity: 86%)
+  - Ensemble weights: RF(2.5), CatBoost(1.5), XGB(1.0)
+
+#### Over-Sampling Approach (SVM-SMOTE)
+Enhanced minority class representation through synthetic sample generation.
+
+**Models Evaluated:**
+- Random Forest (Accuracy: 88%, Sensitivity: 84%)
+- XGBoost (Accuracy: 87%, Sensitivity: 83%)
+- CatBoost (Accuracy: 88%, Sensitivity: 84%)
+- **Voting Classifier** 🏆 (Accuracy: 88.2%, Sensitivity: 84%)
+  - Ensemble weights: RF(2.5), XGB(1.0), CatBoost(1.0)
+
+### Strategic Model Selection
+
+After comprehensive evaluation, the **Over-Sampling (SVM-SMOTE) Voting Classifier** was selected as the optimal solution for deployment.
+
+**Key Advantages:**
+1. **Superior Cost-Effectiveness**
+   - Higher precision in cancellation predictions (80%)
+   - Optimized retention budget allocation
+   - Reduced false-positive costs
+
+2. **Enhanced Customer Experience**
+   - Lower false alarm rate (10.2% vs 12.7%)
+   - Preserved customer goodwill
+   - More targeted retention actions
+
+3. **Balanced Performance**
+   - Strong overall accuracy (88.2%)
+   - Robust sensitivity (84%)
+   - Excellent specificity (89.8%)
+
+While the under-sampling approach showed marginally higher sensitivity (86%), the over-sampling model's superior precision and reduced false positives make it more suitable for practical business implementation, balancing operational costs with customer relationship management.
+
+### Business Impact
+
+The selected model enables:
+- Proactive identification of 84% of potential cancellations
+- 89.8% accuracy in identifying loyal customers
+- Only 10.2% false alarm rate, minimizing unnecessary retention costs
+- Data-driven retention strategies with 83% precision
+
+This solution provides a scalable framework for hotels to protect revenue through early cancellation detection while maintaining positive customer relationships through precise intervention targeting.
 
 *Complete implementation code, experimental results, and methodology documentation available in the project repository.*
 
