@@ -17,7 +17,7 @@
 
 ## Executive Summary
 
-**Business Result:** Developed and validated an ensemble machine learning model that predicts booking cancellations with **87.5% accuracy** and **86% sensitivity**, demonstrating a scalable solution to address the $670K annual revenue loss from cancellations in mid-sized hotels. This portfolio project showcases a production-ready approach to proactive revenue protection through data-driven risk assessment.
+**Business Result:** Developed and validated an ensemble machine learning model that predicts booking cancellations with **88.2% accuracy** and **84% sensitivity** (Over-Sampling Voting Classifier), demonstrating a scalable solution to address the $670K annual revenue loss from cancellations in mid-sized hotels. This portfolio project showcases a production-ready approach to proactive revenue protection through data-driven risk assessment.
 
 ## Dataset Context
 
@@ -91,6 +91,9 @@ In a typical urban hotel generating **$10M in annual revenue**, cancellations an
 
 ## Technical Deep Dive
 
+### Note on sections
+The table below ("Model Comparison Metrics") reports numeric experiment results for each model / sampling strategy. The "Model Evaluation Metrics" section later provides definitions and the business rationale for why those particular metrics were prioritized.
+
 ### Model Comparison Metrics
 
 | Model | Accuracy | Precision | Recall | F1-Score | Specificity | Sensitivity |
@@ -107,16 +110,15 @@ In a typical urban hotel generating **$10M in annual revenue**, cancellations an
 
 ### Model Selection Rationale
 
-The **Voting Classifier with Under-Sampling** was selected for its optimal trade-off between accuracy and sensitivity.  
-It minimizes missed cancellations (false negatives) that represent the highest financial risk.
+The **Voting Classifier with Over-Sampling (SVM-SMOTE)** was selected for deployment because it provides the best balance between operational cost and customer experience based on the evaluated business metrics (precision, recall, specificity, FPR).
 
 > [!TIP]
-> The chosen ensemble model prioritizes **sensitivity** (detecting cancellations) over **overall accuracy**, reflecting a business-driven decision: missing a cancellation is costlier than flagging a false one.
+> The chosen ensemble model prioritizes a business-balanced trade-off between precision and recall: it reduces false positives (protecting customer experience and retention budget) while keeping sensitivity high enough for effective revenue protection.
 
 **Advantages:**
 - Improved detection of high-risk bookings  
 - Ensemble robustness from multiple model perspectives  
-- Balanced performance (specificity 88%, sensitivity 86%)
+- Balanced performance (specificity 89.8%, sensitivity 84%, precision 83%)
 
 ### Technical Stack
 
