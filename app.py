@@ -58,20 +58,20 @@ def main():
         # add a small gap column between the two input columns
         c1, gap, c2 = st.columns([1, 0.2, 1])
         with c1:
-            input_data['lead_time'] = st.number_input('Lead Time (days)', min_value=0, help="Number of days between booking and arrival")
-            input_data['avg_price_per_room'] = st.number_input('Average Price per Room (€)', min_value=0.0, help="Average daily rate")
+            input_data['lead_time'] = st.number_input('Lead Time (days)', min_value=0, help="Number of days between the date of booking and the arrival date")
+            input_data['avg_price_per_room'] = st.number_input('Average Price per Room (€)', min_value=0.0, help="Average price per day of the reservation (in euros); prices are dynamic")
         with c2:
-            input_data['no_of_week_days'] = st.number_input('Number of Week Days', min_value=0, help="Length of stay during weekdays")
-            input_data['no_of_people'] = st.number_input('Number of People', min_value=1, help="Total number of guests")
+            input_data['no_of_week_days'] = st.number_input('Number of Week Days', min_value=0, help="Number of weeks the guest stayed or booked to stay at the hotel")
+            input_data['no_of_people'] = st.number_input('Number of People', min_value=1, help="Total number of adults and kids")
 
         st.markdown("### Additional Information")
         # add a small gap column here too
         c3, gap2, c4 = st.columns([1, 0.2, 1])
         with c3:
-            input_data['no_of_special_requests'] = st.number_input('Number of Special Requests', min_value=0, help="Count of special requests made by the guest")
-            input_data['type_of_meal_plan_Meal Plan 1'] = st.checkbox('Meal Plan 1')
+            input_data['no_of_special_requests'] = st.number_input('Number of Special Requests', min_value=0, help="Total number of special requests made by the customer (e.g., high floor, view from the room, etc.)")
+            input_data['type_of_meal_plan_Meal Plan 1'] = st.checkbox('Meal Plan 1 booked by the customer')
         with c4:
-            input_data['type_of_meal_plan_Meal Plan 2'] = st.checkbox('Meal Plan 2')
+            input_data['type_of_meal_plan_Meal Plan 2'] = st.checkbox('Meal Plan 2 booked by the customer')
             input_data['market_segment_type_Corporate'] = st.checkbox('Corporate Booking')
             input_data['market_segment_type_Online'] = st.checkbox('Online Booking')
 
