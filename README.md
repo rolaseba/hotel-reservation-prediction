@@ -385,6 +385,7 @@ print(f"Cancellation Risk: {probability[0][1]:.1%}")
 streamlit run app.py
 # Open http://localhost:8501
 ```
+![Alt text](reports/figures/app.png)
 
 ---
 
