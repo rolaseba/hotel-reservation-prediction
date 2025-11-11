@@ -2,6 +2,3 @@ __pycache__
 datasets/.ipynb_checkpoints
 catboost_info
 notebook.py
-notebook_old.ipynb
-feature_selection.md
-notebook_old2.ipynb
