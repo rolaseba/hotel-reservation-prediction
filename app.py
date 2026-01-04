@@ -292,5 +292,6 @@ def main():
         st.caption("MIT License © 2024 Sebastián Rolando")
         st.caption("Hotel Reservation Cancellation Prediction System")
 
+
 if __name__ == '__main__':
     main()
