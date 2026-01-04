@@ -285,7 +285,7 @@ def main():
     # Sidebar with GitHub link
     with st.sidebar:
         st.markdown("---")
-        st.markdown("### 📚 Resources")
+        st.markdown("### � Resources")
         st.markdown("[🔗 GitHub Repository](https://github.com/rolaseba/hotel-reservation-prediction)")
         st.markdown("---")
         st.markdown("### 📄 License")
