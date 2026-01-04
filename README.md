@@ -1,10 +1,18 @@
 # Hotel Reservation Cancellation Prediction
-
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.2%2B-orange)
 ![XGBoost](https://img.shields.io/badge/XGBoost-1.7%2B-green)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28%2B-red)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
+## 🎮 Live Demo: Interactive Prediction App
+
+> **[Click here to Play with the Live App!](https://hotel-reservation-prediction.streamlit.app)**
+
+Explore the **Business Intelligence Interface** for this project. This interactive tool allows you to:
+- **Predict Cancellation Risk** in real-time by entering booking details.
+- **Visualize** probabilities and color-coded risk indicators.
+- **Adjust Risk Thresholds** to see how it impacts decision-making.
 
 **Repository:** [https://github.com/rolaseba/hotel-reservation-prediction](https://github.com/rolaseba/hotel-reservation-prediction)  
 **Author:** Sebastián Rolando | **License:** MIT © 2024
@@ -23,7 +31,7 @@
 5. [Technical Approach](#technical-approach)
 6. [Model Performance](#model-performance)
 7. [Key Insights](#key-insights)
-8. [Deployment](#deployment)
+8. [Deployment & Interactive App](#-deployment--interactive-app)
 9. [Installation & Usage](#installation--usage)
 10. [Project Structure](#project-structure)
 11. [References](#references)
@@ -258,9 +266,15 @@ type_of_meal_plan:         8.3%  ████████
 
 ---
 
-## Deployment
+## 🚀 Deployment & Interactive App
 
-### 🚀 Interactive Web Application (Streamlit)
+### Interactive Web Application (Streamlit)
+
+This project includes a fully functional, production-ready Streamlit application that serves as the deployment frontend, consuming the trained ensemble model to provide real-time cancellation risk assessment.
+
+> **[👉 Click here to Play with the Live App](https://hotel-reservation-prediction.streamlit.app)**
+
+![Streamlit App Screenshot](streamlit_app/figs/screenshot.png)
 
 **Features:**
 - **Real-time Predictions**: Input booking details → instant risk assessment
@@ -268,19 +282,26 @@ type_of_meal_plan:         8.3%  ████████
 - **Professional UI**: Color-coded risk indicators, intuitive interface
 - **Live Probabilities**: Detailed breakdown of cancellation likelihood
 
-**Running the App:**
+**Running the App Locally:**
 ```bash
+# From the root directory
+conda run -n ml_py3132_env streamlit run streamlit_app/app.py
+
+# Or directly from the streamlit_app folder
+cd streamlit_app
+pip install -r requirements.txt
 streamlit run app.py
-# Open browser to http://localhost:8501
 ```
 
 **Configuration:**
 ```python
-# Adjust in app.py
+# Adjust in streamlit_app/app.py
 CANCELLATION_RISK_THRESHOLD = 0.60  # Change risk threshold
 ```
 
-### Deployment Options
+For more details on the app's architecture and ensemble voting logic, please refer to the [Streamlit App Documentation](streamlit_app/README.md).
+
+### Deployment Options & Maintenance
 
 | Option | Use Case | Timeline |
 |--------|----------|----------|
@@ -288,8 +309,7 @@ CANCELLATION_RISK_THRESHOLD = 0.60  # Change risk threshold
 | **Real-time API** | Booking system integration | On-the-fly decisions |
 | **Automated Reports** | Revenue team alerts | Daily/weekly briefings |
 
-### Monitoring & Maintenance
-
+**Monitoring & Maintenance:**
 - Weekly performance tracking
 - Monthly model retraining with new data
 - Automated alerts for performance degradation
@@ -381,7 +401,6 @@ print(f"Cancellation Risk: {probability[0][1]:.1%}")
 streamlit run app.py
 # Open http://localhost:8501
 ```
-![Alt text](reports/figures/app.png)
 
 ---
 
@@ -484,3 +503,5 @@ You are free to use, modify, and distribute this software under the MIT License.
 **Have questions?** Open an issue on the [GitHub Repository](https://github.com/rolaseba/hotel-reservation-prediction)
 
 **Last Updated:** 2024 | Sebastián Rolando | Data Science Portfolio
+
+---
