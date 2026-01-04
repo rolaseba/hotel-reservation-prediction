@@ -282,15 +282,16 @@ def main():
                 except Exception as e:
                     st.error(f"An error occurred: {str(e)}")
 
-    # Sidebar with GitHub link
+    # Sidebar with Portfolio Footer
     with st.sidebar:
         st.markdown("---")
-        st.markdown("### � Resources")
-        st.markdown("[🔗 GitHub Repository](https://github.com/rolaseba/hotel-reservation-prediction)")
-        st.markdown("---")
-        st.markdown("### 📄 License")
-        st.caption("MIT License © 2024 Sebastián Rolando")
-        st.caption("Hotel Reservation Cancellation Prediction System")
+        st.markdown("### 👨‍💻 Project & Author")
+        st.info(
+            "**Sebastián Rolando**\n\n"
+            "This project is part of my Data Science portfolio.\n\n"
+            "[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?logo=github)](https://github.com/rolaseba/hotel-reservation-prediction)"
+        )
+
 
 
 if __name__ == '__main__':
