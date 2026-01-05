@@ -282,6 +282,8 @@ This project includes a fully functional, production-ready Streamlit application
 - **Professional UI**: Color-coded risk indicators, intuitive interface
 - **Live Probabilities**: Detailed breakdown of cancellation likelihood
 
+For details on the app's architecture, recursive forecasting logic, and how to run it locally, please refer to the [Streamlit App Documentation](streamlit_app/README.md).
+
 **Running the App Locally:**
 ```bash
 # From the root directory
